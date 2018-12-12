@@ -5,12 +5,21 @@
 		<title></title>
 	</head>
 	<body>
+		<div>
+            <h3></h3>
+            <span></span>
+		</div>
 	</body>
 	<script src="jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 		$.get("http://localhost:8080/chick",(res)=>{
-			console.log(res)
-			
+			var data=JSON.parse(res)
+			console.log(data)
+			var str="";
+			for (var i = 0; i < data.length; i++) {
+				str+="<h3>"+data[i].title+"</h3><span>"+data[i].content+"</span>"
+			}
+			$("div").html(str)
 		})
 	</script>
 </html>
